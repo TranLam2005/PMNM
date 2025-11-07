@@ -103,3 +103,23 @@ POST /upload/data
     },
   ]
 }
+
+## Yêu cầu
+- Node 22 / Python 3.11 
+- Docker (tuỳ chọn)
+
+## cách cài và chạy
+
+git clone https://github.com/TranLam2005/PMNM.git
+
+# frontend
+cd frontend/pmnm
+pnpm add
+pnpm dev
+
+# backend
+cd backend
+conda activate pmnm
+uvicorn app.main:app --reload
+watchmedo auto-restart --directory=./app --pattern="*.py" --recursive -- \
+    celery -A app.core.celery_app.celery worker -l info --pool=solo
