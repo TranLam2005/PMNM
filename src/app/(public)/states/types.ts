@@ -1,0 +1,6 @@
+export interface MenuItem {
+  id: number;
+  name: string;
+  slug: string;
+  children?: MenuItem[];
+}
