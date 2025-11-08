@@ -113,8 +113,10 @@ POST /upload/data
 git clone https://github.com/TranLam2005/PMNM.git
 
 # frontend
-cd frontend/pmnm
-pnpm add
+cd frontend/
+git clone -b feat/fe
+sau đó đổi tên thư mục thành pmnm
+pnpm install
 pnpm dev
 
 # backend
@@ -123,3 +125,7 @@ conda activate pmnm
 uvicorn app.main:app --reload
 watchmedo auto-restart --directory=./app --pattern="*.py" --recursive -- \
     celery -A app.core.celery_app.celery worker -l info --pool=solo
+
+## docker
+docker compose -d build
+docker compose up

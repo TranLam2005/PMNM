@@ -10,7 +10,6 @@ services:
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
       - db_data:/var/lib/postgresql/data
-
   backend:
     build:
       context: ./backend
@@ -26,6 +25,11 @@ services:
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
       MLFLOW_TRACKING_URI: file:///app/mlruns
       MODEL_NAME: attp_facility_rate_prediction
+      MINIO_ENDPOINT: ${MINIO_ENDPOINT:-host.docker.internal:9000}
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-admin}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-12345678}
+      MINIO_BUCKET: ${MINIO_BUCKET:-pmnm}
+      MINIO_SECURE: ${MINIO_SECURE:-false}
     command: >
       uvicorn app.main:app --host 0.0.0.0 --port 8000
     ports: ["${BACKEND_PORT:-8000}:8000"]
@@ -52,7 +56,7 @@ services:
     depends_on: [backend]
     environment:
       NODE_ENV: production
-      NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://localhost:8000}
+      NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://backend:8000}
       PORT: ${FRONTEND_PORT:-3000}
     ports: ["${FRONTEND_PORT:-3000}:3000"]
 

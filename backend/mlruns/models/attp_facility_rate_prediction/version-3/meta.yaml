@@ -1,0 +1,15 @@
+creation_timestamp: 1762558096865
+current_stage: None
+deployment_job_state: null
+description: null
+last_updated_timestamp: 1762558096865
+model_id: m-ea1ae319101d4344a4f0261c0226be32
+name: attp_facility_rate_prediction
+run_id: e70de9dc3ba046cc952bea01673fec29
+run_link: null
+source: models:/m-ea1ae319101d4344a4f0261c0226be32
+status: READY
+status_message: null
+storage_location: file:////app/mlruns/325605362493771688/models/m-ea1ae319101d4344a4f0261c0226be32/artifacts
+user_id: null
+version: 3

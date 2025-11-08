@@ -1,0 +1,14 @@
+artifact_uri: file:////app/mlruns/325605362493771688/e70de9dc3ba046cc952bea01673fec29/artifacts
+end_time: 1762558097584
+entry_point_name: ''
+experiment_id: '325605362493771688'
+lifecycle_stage: active
+run_id: e70de9dc3ba046cc952bea01673fec29
+run_name: handsome-fawn-452
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762558086904
+status: 3
+tags: []
+user_id: root

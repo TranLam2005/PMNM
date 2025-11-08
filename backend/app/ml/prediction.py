@@ -17,18 +17,13 @@ FEATURE_COLUMNS = [
 LAG_STEPS = [1, 2, 3]
 
 MODEL_NAME   = os.getenv("MODEL_NAME", "attp_facility_rate_prediction")
-MODEL_STAGE  = os.getenv("MODEL_STAGE")        # ví dụ: "Production" | "Staging" | None
-MODEL_VER    = os.getenv("MODEL_VERSION")      # ví dụ: "3" | None
+MODEL_STAGE  = os.getenv("MODEL_STAGE")
+MODEL_VER    = os.getenv("MODEL_VERSION")
 TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI", "file:///app/mlruns")  # cho container
 mlflow.set_tracking_uri(TRACKING_URI)
 
 def resolve_model_uri():
-    """
-    Ưu tiên theo thứ tự:
-    1) MODEL_VERSION -> models:/name/<ver>
-    2) MODEL_STAGE   -> models:/name@<stage>
-    3) Không set gì  -> chọn version lớn nhất (latest) của model
-    """
+
     client = MlflowClient()
 
     # Nếu có version cụ thể
